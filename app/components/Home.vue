@@ -62,7 +62,7 @@ export default {
     },
     computed: {
         message() {
-            return "Home {N}-Vue app";
+            return "NativeScript with Vue";
         },
     },
     methods: {

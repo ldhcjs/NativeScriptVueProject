@@ -1,10 +1,19 @@
 <template>
-    <Page>
-        <ActionBar>
+    <Page class="page">
+        <ActionBar class="action-bar">
+            <NavigationButton visibility="hidden" />
             <Label text="Home" />
+            <GridLayout columns="50, *">
+                <Label class="action-bar-title" text="Home" colSpan="2" />
+                <Label
+                    class="fas"
+                    text.decode="&#xf0c9;"
+                    @tap="onDrawerButtonTap"
+                />
+            </GridLayout>
         </ActionBar>
 
-        <GridLayout rows="*,*,*,*,*" columns="*">
+        <GridLayout class="page__content" rows="*,*,*,*,*" columns="*">
             <Label row="0" class="info">
                 <FormattedString>
                     <Span class="fas" text.decode="&#xf135; " />
@@ -29,29 +38,37 @@
                 @tap="showDatePickerModal"
                 height="100%"
             />
-            <!-- <DatePicker
-                v-show="showDatePicker"
-                :year="year"
-                :month="month"
-                :day="day"
-            /> -->
         </GridLayout>
     </Page>
 </template>
 
 <script>
+import * as utils from "~/shared/utils";
+import { SelectedPageService } from "../shared/selected-page-service";
+
 import * as Camera from "@nativescript/camera";
-import { CoreTypes, DatePicker } from "@nativescript/core";
+import {
+    CoreTypes,
+    DatePicker,
+    GridLayout,
+    NavigationButton,
+} from "@nativescript/core";
 import * as Geolocation from "@nativescript/geolocation";
 import DatePickerModal from "./DatePickerModal.vue";
 
 export default {
+    mounted() {
+        SelectedPageService.getInstance().updateSelectedPage("Home");
+    },
     computed: {
         message() {
-            return "Blank {N}-Vue app";
+            return "Home {N}-Vue app";
         },
     },
     methods: {
+        onDrawerButtonTap() {
+            utils.showDrawer();
+        },
         // 사진 촬영 기능, 권한 요청 -> 사진 찍기 -> 사진 리소스 얻기
         async takePicture() {
             await Camera.requestCameraPermissions();

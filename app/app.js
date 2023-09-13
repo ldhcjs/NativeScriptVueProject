@@ -1,7 +1,12 @@
 import Vue from "nativescript-vue";
+import RadSideDrawer from "nativescript-ui-sidedrawer/vue";
 
-import Home from "./components/Home";
-``;
+Vue.use(RadSideDrawer);
+
+import App from "./components/App";
+
+Vue.config.silent = !__DEV__;
+
 new Vue({
-    render: (h) => h("frame", [h(Home)]),
+    render: (h) => h(App),
 }).$start();

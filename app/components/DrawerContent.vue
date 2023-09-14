@@ -34,7 +34,11 @@
                     "
                     @tap="onNavigationItemTap(Chat)"
                 >
-                    <Label col="0" text.decode="&#xf015;" class="nt-icon fas" />
+                    <Label
+                        col="0"
+                        text.decode="&#x1F4AC;"
+                        class="nt-icon fas"
+                    />
                     <Label col="1" text="Chat" class="p-r-10" />
                 </GridLayout>
             </StackLayout>

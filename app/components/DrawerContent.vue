@@ -25,6 +25,18 @@
                     <Label col="0" text.decode="&#xf015;" class="nt-icon fas" />
                     <Label col="1" text="Home" class="p-r-10" />
                 </GridLayout>
+
+                <GridLayout
+                    columns="auto, *"
+                    :class="
+                        'nt-drawer__list-item' +
+                        (selectedPage === 'Chat' ? ' -selected:' : '')
+                    "
+                    @tap="onNavigationItemTap(Chat)"
+                >
+                    <Label col="0" text.decode="&#xf015;" class="nt-icon fas" />
+                    <Label col="1" text="Chat" class="p-r-10" />
+                </GridLayout>
             </StackLayout>
         </ScrollView>
     </GridLayout>
@@ -32,6 +44,7 @@
 
 <script>
 import Home from "./Home";
+import Chat from "./Chat";
 import * as utils from "~/shared/utils";
 import { SelectedPageService } from "~/shared/selected-page-service";
 
@@ -44,11 +57,13 @@ export default {
     data() {
         return {
             Home: Home,
+            Chat: Chat,
             selectedPage: "",
         };
     },
     components: {
         Home,
+        Chat,
         // Add any page
     },
     methods: {

@@ -11,6 +11,7 @@ import { StackLayout } from '@nativescript/core';
         </StackLayout>
         <Frame ~mainContent ref="drawerMainContent">
             <Home />
+            <Chat />
         </Frame>
     </RadSideDrawer>
 </template>
@@ -18,6 +19,7 @@ import { StackLayout } from '@nativescript/core';
 <script>
 import DrawerContent from "./DrawerContent";
 import Home from "./Home";
+import Chat from "./Chat";
 import { SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 
 export default {
@@ -30,6 +32,7 @@ export default {
     components: {
         DrawerContent,
         Home,
+        Chat,
     },
 };
 </script>

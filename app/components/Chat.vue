@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import * as utils from "~/shared/utils";
 import { TextField } from "@nativescript/core";
 import { ListView } from "@nativescript/core";
 import { GridLayout } from "@nativescript/core";
@@ -40,6 +41,9 @@ export default {
         };
     },
     methods: {
+        onDrawerButtonTap() {
+            utils.showDrawer();
+        },
         sendMessage() {
             if (this.newMessage.trim() === "") return;
             this.messages.push({ text: this.newMessage.trim() });
